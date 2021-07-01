@@ -7,6 +7,7 @@ import {
   LayoutChangeEvent,
   TextStyle,
   ViewStyle,
+  TouchableOpacity,
 } from 'react-native';
 import PlatformPressable from './PlatformPressable';
 import { Scene, Route, NavigationState } from './types';
@@ -214,7 +215,7 @@ export default class TabBarItem<T extends Route> extends React.Component<
 
     const badge = renderBadge ? renderBadge(scene) : null;
 
-    return (
+    /*
       <PlatformPressable
         android_ripple={{ borderless: true }}
         testID={getTestID(scene)}
@@ -238,6 +239,27 @@ export default class TabBarItem<T extends Route> extends React.Component<
           {badge != null ? <View style={styles.badge}>{badge}</View> : null}
         </View>
       </PlatformPressable>
+    */
+
+    return (
+      <TouchableOpacity
+          // android_ripple={{ borderless: true }}
+          testID={getTestID(scene)}
+          accessible={getAccessible(scene)}
+          accessibilityLabel={accessibilityLabel}
+          accessibilityRole="tab"
+          accessibilityState={{ selected: isFocused }}
+          // @ts-ignore: this is to support older React Native versions
+          accessibilityStates={isFocused ? ['selected'] : []}
+          onPress={onPress}  
+          style={tabContainerStyle}
+        >
+          <View pointerEvents="none" style={[styles.item, tabStyle]}>
+            {icon}
+            {label}
+            {badge != null ? <View style={styles.badge}>{badge}</View> : null}
+          </View>
+      </TouchableOpacity>
     );
   }
 }

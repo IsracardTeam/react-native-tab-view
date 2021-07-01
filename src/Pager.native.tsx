@@ -63,7 +63,12 @@ export default function Pager<T extends Route>({
       (route: { key: string }) => route.key === key
     );
 
-    pagerRef.current?.setPage(index);
+    if (typeof pagerRef.current?.setPage !== 'function' && typeof pagerRef.current?.getNode === 'function') {      
+      pagerRef.current?.getNode().setPage(index);
+    }
+    else {
+      pagerRef.current?.setPage(index);
+    }
   }, []);
 
   React.useEffect(() => {
@@ -72,7 +77,12 @@ export default function Pager<T extends Route>({
     }
 
     if (indexRef.current !== index) {
-      pagerRef.current?.setPage(index);
+      if (typeof pagerRef.current?.setPage !== 'function' && typeof pagerRef.current?.getNode === 'function') {      
+        pagerRef.current?.getNode().setPage(index);
+      }
+      else {
+        pagerRef.current?.setPage(index);
+      }
     }
   }, [keyboardDismissMode, index]);
 
