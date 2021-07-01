@@ -9,7 +9,7 @@ import {
   ViewStyle,
   TouchableOpacity,
 } from 'react-native';
-import PlatformPressable from './PlatformPressable';
+// import PlatformPressable from './PlatformPressable';
 import { Scene, Route, NavigationState } from './types';
 
 export type Props<T extends Route> = {
@@ -96,13 +96,13 @@ export default class TabBarItem<T extends Route> extends React.Component<
       getAccessible,
       activeColor = DEFAULT_ACTIVE_COLOR,
       inactiveColor = DEFAULT_INACTIVE_COLOR,
-      pressColor,
-      pressOpacity,
+    //  pressColor,
+    //  pressOpacity,
       labelStyle,
       style,
-      onLayout,
+    //  onLayout,
       onPress,
-      onLongPress,
+    //  onLongPress,
     } = this.props;
 
     const tabIndex = navigationState.routes.indexOf(route);
