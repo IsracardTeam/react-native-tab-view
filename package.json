@@ -12,8 +12,6 @@
   ],
   "scripts": {
     "test": "jest",
-    "typescript": "tsc --noEmit",
-    "lint": "eslint --ext .js,.ts,.tsx .",
     "release": "release-it",
     "example": "yarn --cwd example",
     "bootstrap": "yarn example && yarn",
@@ -82,8 +80,7 @@
     "output": "lib",
     "targets": [
       "commonjs",
-      "module",
-      "typescript"
+      "module"
     ]
   }
 }
